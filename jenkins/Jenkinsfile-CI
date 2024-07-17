@@ -1,15 +1,18 @@
 pipeline {
     agent any
+    tools {
+        maven "maven"
+    }
     stages {
         stage('compile') {
            steps {
               git 'https://github.com/anveshpanjala/samplejavappforpractice.git'
-              sh '/usr/share/maven/bin/mvn compile'
+              sh 'mvn compile'
            }
         }
         stage('codereview-pmd') {
            steps {
-              sh '/usr/share/maven/bin/mvn -P metrics pmd:pmd'
+              sh 'mvn -P metrics pmd:pmd'
            }
            post {
                success {
@@ -19,7 +22,7 @@ pipeline {
         }
         stage('unit-test') {
            steps {
-              sh '/usr/share/maven/bin/mvn test'
+              sh 'mvn test'
                  }
            post {
                success {
@@ -29,7 +32,7 @@ pipeline {
         }
         stage('package') {
            steps {
-              sh '/usr/share/maven/bin/mvn package'
+              sh 'mvn package'
            }
         }
     }
