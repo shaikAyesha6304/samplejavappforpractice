@@ -3,5 +3,5 @@ test
 testing webhook trigger
 pipeline test1 using webhook trigger
 final deployment test2
-CICD multi job pipeline test1
+CICD multi-job pipeline test1
 web-hook trigger test1
